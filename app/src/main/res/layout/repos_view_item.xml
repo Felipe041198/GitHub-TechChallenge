@@ -9,7 +9,7 @@
         android:id="@+id/repo_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Test Title Repository"
+        android:text="@string/standart_title"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -17,18 +17,14 @@
         android:textSize="32dp"/>
 
     <TextView
-        android:id="@+id/repo_author"
+        android:id="@+id/repo_owner"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:text="Test Author Repository"
+        android:text="@string/standart_author"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/repo_title"
         app:layout_constraintRight_toRightOf="parent"
         android:textColor="@color/AuthorGray"
         android:textSize="16dp"/>
-
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

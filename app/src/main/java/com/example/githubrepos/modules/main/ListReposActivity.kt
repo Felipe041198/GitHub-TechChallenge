@@ -30,9 +30,6 @@ class ListReposActivity : AppCompatActivity() {
         setContentView(R.layout.list_repos_activity)
         viewModel = ViewModelProvider(this, Injection.provideViewModelFactory()).get(ListReposViewModel::class.java)
 
-        val decoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
-        repos_view.addItemDecoration(decoration)
-
         initAdapter()
         val query = savedInstanceState?.getString(LAST_SEARCH_QUERY) ?: DEFAULT_QUERY
         search(query)

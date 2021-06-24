@@ -1,7 +1,7 @@
 package com.example.githubrepos.modules.main
 
 import android.content.Intent
-import android.net.Uri
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,10 +9,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.githubrepos.R
 import com.example.githubrepos.model.Repository
+import com.example.githubrepos.modules.details.DetailsActivity
 
 class RepoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val name: TextView = view.findViewById(R.id.repo_title)
-    private val author: TextView = view.findViewById(R.id.repo_author)
+    private val owner: TextView = view.findViewById(R.id.repo_owner)
 
     private var repo: Repository? = null
 
@@ -26,7 +27,7 @@ class RepoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         if (repo == null) {
             val resources = itemView.resources
             name.text = resources.getString(R.string.loading)
-            author.visibility = View.GONE
+            owner.visibility = View.GONE
         } else {
             showRepoData(repo)
         }
@@ -35,7 +36,7 @@ class RepoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private fun showRepoData(repo: Repository) {
         this.repo = repo
         name.text = repo.name
-        author.text = repo.author?.login
+        owner.text = repo.owner?.login
     }
 
     companion object {
@@ -45,4 +46,8 @@ class RepoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             return RepoViewHolder(view)
         }
     }
+
+
+
+
 }

@@ -2,5 +2,9 @@
     <string name="app_name">GitHubRepos</string>
     <string name="loading">Carregando...</string>
     <string name="empty_list">A lista está vazia</string>
-    <string name="standart_author">Autor:</string>
+    <string name="standart_author">Nome do Dono</string>
+    <string name="standart_title">Nome do Repositório</string>
+    <string name="owner">Dono:</string>
+    <string name="standart_description">Descrição de teste de um repositório qualquer</string>
+    <string name="description">Descrição:</string>
 </resources>
