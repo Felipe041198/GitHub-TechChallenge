@@ -1,37 +1,54 @@
-package com.example.githubrepos.modules.main
+package com.example.githubrepos
 
-import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.view.KeyEvent
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
-import androidx.recyclerview.widget.DividerItemDecoration
-import com.example.githubrepos.Injection
-import com.example.githubrepos.R
+import com.example.githubrepos.modules.main.ReposAdapter
 import kotlinx.android.synthetic.main.list_repos_activity.*
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.launch
+import kotlin.collections.emptyList
 
-class ListReposActivity : AppCompatActivity() {
+class RepositorySearchFragment : Fragment() {
 
-    private lateinit var viewModel: ListReposViewModel
-    private val adapter = ReposAdapter()
+    companion object {
+        fun newInstance() = RepositorySearchFragment()
+        private const val LAST_SEARCH_QUERY: String = "last_search_query"
+        private const val DEFAULT_QUERY = "Android"
+    }
+
+    private lateinit var viewModel: RepositorySearchViewModel
+
+    lateinit var adapter: ReposAdapter
     private var searchJob: Job? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.list_repos_activity)
-        viewModel = ViewModelProvider(this, Injection.provideViewModelFactory()).get(ListReposViewModel::class.java)
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.repository_search_fragment, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(this,Injection.provideViewModelFactory()).get(RepositorySearchViewModel::class.java)
+
+        adapter = ReposAdapter(findNavController())
 
         initAdapter()
-        val query = savedInstanceState?.getString(LAST_SEARCH_QUERY) ?: DEFAULT_QUERY
+        val query = savedInstanceState?.getString(RepositorySearchFragment.LAST_SEARCH_QUERY) ?: RepositorySearchFragment.DEFAULT_QUERY
         search(query)
         initSearch(query)
     }
@@ -93,10 +110,5 @@ class ListReposActivity : AppCompatActivity() {
             emptyList.visibility = View.GONE
             repos_view.visibility = View.VISIBLE
         }
-    }
-
-    companion object {
-        private const val LAST_SEARCH_QUERY: String = "last_search_query"
-        private const val DEFAULT_QUERY = "Android"
     }
 }

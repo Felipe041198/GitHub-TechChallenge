@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navgation"
+    app:startDestination="@id/repositorySearchFragment">
+
+    <fragment
+        android:id="@+id/repositorySearchFragment"
+        android:name="com.example.githubrepos.RepositorySearchFragment"
+        android:label="repository_search_fragment"
+        tools:layout="@layout/repository_search_fragment" >
+        <action
+            android:id="@+id/action_repositorySearchFragment_to_repositoryDetailsFragment"
+            app:destination="@id/repositoryDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/repositoryDetailsFragment"
+        android:name="com.example.githubrepos.RepositoryDetailsFragment"
+        android:label="repository_details_fragment"
+        tools:layout="@layout/repository_details_fragment" >
+        <action
+            android:id="@+id/action_repositoryDetailsFragment_to_repositorySearchFragment"
+            app:destination="@id/repositorySearchFragment" />
+    </fragment>
+</navigation>

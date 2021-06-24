@@ -1,4 +1,4 @@
-package com.example.githubrepos.modules.main
+package com.example.githubrepos
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -8,7 +8,7 @@ import com.example.githubrepos.data.GithubRepository
 import com.example.githubrepos.model.Repository
 import kotlinx.coroutines.flow.Flow
 
-class ListReposViewModel (private val repository: GithubRepository) : ViewModel() {
+class RepositorySearchViewModel (private val repository: GithubRepository) : ViewModel() {
     private var currentQueryValue: String? = null
 
     private var currentSearchResult: Flow<PagingData<Repository>>? = null

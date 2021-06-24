@@ -1,14 +1,18 @@
 package com.example.githubrepos.modules.main
 
 import android.view.ViewGroup
+import androidx.navigation.NavController
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.example.githubrepos.model.Repository
 
-class ReposAdapter : PagingDataAdapter<Repository, RepoViewHolder>(REPO_COMPARATOR) {
+class ReposAdapter (navController: NavController) : PagingDataAdapter<Repository, RepoViewHolder>(REPO_COMPARATOR) {
+
+    private var navigationController = navController
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepoViewHolder {
-        return RepoViewHolder.create(parent)
+        return RepoViewHolder.create(parent,navigationController)
     }
 
     override fun onBindViewHolder(holder: RepoViewHolder, position: Int) {
@@ -27,4 +31,5 @@ class ReposAdapter : PagingDataAdapter<Repository, RepoViewHolder>(REPO_COMPARAT
                 oldItem == newItem
         }
     }
+
 }
