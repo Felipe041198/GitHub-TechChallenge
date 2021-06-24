@@ -21,7 +21,7 @@ class ReposAdapter : PagingDataAdapter<Repository, RepoViewHolder>(REPO_COMPARAT
     companion object {
         private val REPO_COMPARATOR = object : DiffUtil.ItemCallback<Repository>() {
             override fun areItemsTheSame(oldItem: Repository, newItem: Repository): Boolean =
-                oldItem.full_name == newItem.full_name
+                oldItem.id == newItem.id
 
             override fun areContentsTheSame(oldItem: Repository, newItem: Repository): Boolean =
                 oldItem == newItem

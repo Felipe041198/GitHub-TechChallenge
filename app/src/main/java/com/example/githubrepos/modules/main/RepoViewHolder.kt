@@ -35,7 +35,7 @@ class RepoViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private fun showRepoData(repo: Repository) {
         this.repo = repo
         name.text = repo.name
-        author.text = repo.author?.login ?: "Missing Author"
+        author.text = repo.author?.login
     }
 
     companion object {

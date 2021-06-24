@@ -8,12 +8,14 @@ import android.view.inputmethod.EditorInfo
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.githubrepos.Injection
 import com.example.githubrepos.R
 import kotlinx.android.synthetic.main.list_repos_activity.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.flow.filter
 
@@ -21,11 +23,15 @@ class ListReposActivity : AppCompatActivity() {
 
     private lateinit var viewModel: ListReposViewModel
     private val adapter = ReposAdapter()
+    private var searchJob: Job? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.list_repos_activity)
         viewModel = ViewModelProvider(this, Injection.provideViewModelFactory()).get(ListReposViewModel::class.java)
+
+        val decoration = DividerItemDecoration(this, DividerItemDecoration.VERTICAL)
+        repos_view.addItemDecoration(decoration)
 
         initAdapter()
         val query = savedInstanceState?.getString(LAST_SEARCH_QUERY) ?: DEFAULT_QUERY
@@ -33,20 +39,17 @@ class ListReposActivity : AppCompatActivity() {
         initSearch(query)
     }
 
-    private var searchJob: Job? = null
-
     private fun search(query: String) {
         searchJob?.cancel()
         searchJob = lifecycleScope.launch {
-            viewModel.searchRepo(query).collect {
+            viewModel.searchRepo(query).collectLatest {
                 adapter.submitData(it)
             }
         }
     }
 
     private fun initAdapter() {
-        val recyclerView = repos_view
-        recyclerView.adapter = ReposAdapter()
+        repos_view.adapter = adapter
     }
 
     private fun initSearch(query: String) {
@@ -69,7 +72,6 @@ class ListReposActivity : AppCompatActivity() {
             }
         }
 
-        // Scroll to top when the list is refreshed from network.
         lifecycleScope.launch {
             adapter.loadStateFlow
                 .distinctUntilChangedBy { it.refresh }

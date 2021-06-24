@@ -11,7 +11,7 @@ import retrofit2.http.Query
 const val IN_QUALIFIER = "in:name"
 
 interface GithubService {
-    @GET("search/repositories?sort=name")
+    @GET("search/repositories?sort=")
     suspend fun searchRepos(
         @Query("q") query: String,
         @Query("page") page: Int,
