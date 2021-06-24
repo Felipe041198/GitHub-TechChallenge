@@ -55,7 +55,7 @@ class RepositorySearchFragment : Fragment() {
 
     private fun search(query: String) {
         searchJob?.cancel()
-        searchJob = lifecycleScope.launch {
+            searchJob = lifecycleScope.launch {
             viewModel.searchRepo(query).collectLatest {
                 adapter.submitData(it)
             }

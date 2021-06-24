@@ -60,6 +60,7 @@
 
 
     <TextView
+        android:id="@+id/repo_description"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:text="@string/standart_description"

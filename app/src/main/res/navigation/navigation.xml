@@ -8,19 +8,24 @@
     <fragment
         android:id="@+id/repositorySearchFragment"
         android:name="com.example.githubrepos.RepositorySearchFragment"
-        android:label="repository_search_fragment"
-        tools:layout="@layout/repository_search_fragment" >
+        android:label="Github Repository Search"
+        tools:layout="@layout/repository_search_fragment">
         <action
             android:id="@+id/action_repositorySearchFragment_to_repositoryDetailsFragment"
-            app:destination="@id/repositoryDetailsFragment" />
+            app:destination="@id/repositoryDetailsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/repositoryDetailsFragment"
         android:name="com.example.githubrepos.RepositoryDetailsFragment"
-        android:label="repository_details_fragment"
-        tools:layout="@layout/repository_details_fragment" >
+        android:label="Repository Details"
+        tools:layout="@layout/repository_details_fragment">
         <action
             android:id="@+id/action_repositoryDetailsFragment_to_repositorySearchFragment"
             app:destination="@id/repositorySearchFragment" />
+        <argument
+            android:name="currentRepo"
+            app:argType="com.example.githubrepos.model.Repository" />
     </fragment>
 </navigation>

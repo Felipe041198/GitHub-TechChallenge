@@ -11,6 +11,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.githubrepos.R
+import com.example.githubrepos.RepositorySearchFragmentDirections
 import com.example.githubrepos.model.Repository
 import com.example.githubrepos.modules.details.DetailsActivity
 
@@ -22,7 +23,11 @@ class RepoViewHolder(view: View, navController: NavController) : RecyclerView.Vi
 
     init {
         view.setOnClickListener {
-            navController.navigate(R.id.action_repositorySearchFragment_to_repositoryDetailsFragment)
+            navController.navigate(
+                RepositorySearchFragmentDirections.actionRepositorySearchFragmentToRepositoryDetailsFragment(
+                    repo!!
+                )
+            )
         }
     }
 
@@ -43,14 +48,12 @@ class RepoViewHolder(view: View, navController: NavController) : RecyclerView.Vi
     }
 
     companion object {
-        fun create(parent: ViewGroup,navController: NavController): RepoViewHolder {
+        fun create(parent: ViewGroup, navController: NavController): RepoViewHolder {
             val view = LayoutInflater.from(parent.context)
                 .inflate(R.layout.repos_view_item, parent, false)
-            return RepoViewHolder(view,navController)
+            return RepoViewHolder(view, navController)
         }
     }
-
-
 
 
 }
