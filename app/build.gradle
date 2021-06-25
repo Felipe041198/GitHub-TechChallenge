@@ -51,12 +51,13 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    testImplementation 'junit:junit:4.+'
+    testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines"
     implementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"
     implementation "androidx.room:room-runtime:$roomVersion"
     implementation "androidx.room:room-ktx:$roomVersion"
@@ -66,8 +67,6 @@ dependencies {
     // Koin
     implementation "io.insert-koin:koin-core:$koin_version"
     testImplementation "io.insert-koin:koin-test:$koin_version"
-    testImplementation "io.insert-koin:koin-test-junit4:$koin_version"
-    testImplementation "io.insert-koin:koin-test-junit5:$koin_version"
     implementation "io.insert-koin:koin-android:$koin_version"
     implementation "io.insert-koin:koin-androidx-workmanager:$koin_version"
     implementation "io.insert-koin:koin-androidx-compose:$koin_version"
@@ -92,5 +91,9 @@ dependencies {
     //Mockito
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_version"
     testImplementation 'android.arch.core:core-testing:1.1.1'
+
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
+    implementation 'io.reactivex.rxjava3:rxjava:3.0.0'
+
 
 }
