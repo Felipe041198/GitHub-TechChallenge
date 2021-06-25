@@ -7,4 +7,5 @@
     <string name="owner">Dono:</string>
     <string name="standart_description">Descrição de teste de um repositório qualquer</string>
     <string name="description">Descrição:</string>
+    <string name="empty_search">A string de pesquisa está vazia</string>
 </resources>

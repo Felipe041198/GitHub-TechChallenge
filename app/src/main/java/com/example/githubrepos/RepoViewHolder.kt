@@ -1,19 +1,12 @@
-package com.example.githubrepos.modules.main
+package com.example.githubrepos
 
-import android.content.Intent
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.fragment.app.FragmentContainerView
 import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.githubrepos.R
-import com.example.githubrepos.RepositorySearchFragmentDirections
 import com.example.githubrepos.model.Repository
-import com.example.githubrepos.modules.details.DetailsActivity
 
 class RepoViewHolder(view: View, navController: NavController) : RecyclerView.ViewHolder(view) {
     private val name: TextView = view.findViewById(R.id.repo_title)
@@ -49,8 +42,7 @@ class RepoViewHolder(view: View, navController: NavController) : RecyclerView.Vi
 
     companion object {
         fun create(parent: ViewGroup, navController: NavController): RepoViewHolder {
-            val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.repos_view_item, parent, false)
+            val view = LayoutInflater.from(parent.context).inflate(R.layout.repos_view_item, parent, false)
             return RepoViewHolder(view, navController)
         }
     }

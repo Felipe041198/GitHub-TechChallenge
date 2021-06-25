@@ -1,8 +1,7 @@
-package com.example.githubrepos.modules.main
+package com.example.githubrepos
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.githubrepos.RepositorySearchViewModel
 import com.example.githubrepos.data.GithubRepository
 
 class ViewModelFactory(private val repository: GithubRepository) : ViewModelProvider.Factory {

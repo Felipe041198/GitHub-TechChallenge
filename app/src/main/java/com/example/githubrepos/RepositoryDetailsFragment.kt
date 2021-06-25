@@ -7,18 +7,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
+import com.example.githubrepos.databinding.RepositoryDetailsFragmentBinding
 import com.nostra13.universalimageloader.core.DisplayImageOptions
 import com.nostra13.universalimageloader.core.ImageLoader
-import kotlinx.android.synthetic.main.list_repos_activity.*
-import kotlinx.android.synthetic.main.repository_details_fragment.*
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 
 class RepositoryDetailsFragment : Fragment() {
 
     private val args by navArgs<RepositoryDetailsFragmentArgs>()
+
+    private lateinit var binding: RepositoryDetailsFragmentBinding
 
     companion object {
         fun newInstance() = RepositoryDetailsFragment()
@@ -36,16 +35,13 @@ class RepositoryDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewModel = ViewModelProvider(this).get(RepositoryDetailsViewModel::class.java)
 
-        val options = DisplayImageOptions.Builder()
-            .cacheInMemory(true)
-            .cacheOnDisk(true)
-            .build()
+        binding = RepositoryDetailsFragmentBinding.bind(view)
 
-        ImageLoader.getInstance().displayImage(args.currentRepo.owner.avatar_url, user_image, options);
+        Glide.with(this).load(args.currentRepo.owner.avatar_url).into(binding.userImage)
 
-        repo_title.text = args.currentRepo.name
-        repo_owner.text = args.currentRepo.owner.login
-        repo_description.text = args.currentRepo.description
+        binding.repoTitle.text = args.currentRepo.name
+        binding.repoOwner.text = args.currentRepo.owner.login
+        binding.repoDescription.text = args.currentRepo.description
 
     }
 }

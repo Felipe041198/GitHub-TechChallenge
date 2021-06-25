@@ -6,7 +6,7 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType
 
 
-class MyApplication: Application() {
+class GitHubTechChallengeApplication: Application() {
 
     override fun onCreate(){
 
