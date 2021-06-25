@@ -1,10 +1,8 @@
 package com.example.githubrepos.data
 
-import android.util.Log
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.example.githubrepos.RepositoryInterface
 import com.example.githubrepos.api.GithubService
 import com.example.githubrepos.model.Repository
 import kotlinx.coroutines.flow.Flow

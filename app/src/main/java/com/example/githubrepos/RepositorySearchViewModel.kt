@@ -3,12 +3,9 @@ package com.example.githubrepos
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.NavController
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.example.githubrepos.core.SingleLiveEvent
 import com.example.githubrepos.data.GithubRepository
-import com.example.githubrepos.databinding.RepositorySearchFragmentBinding
 import com.example.githubrepos.model.Repository
 import kotlinx.coroutines.flow.Flow
 
@@ -21,10 +18,10 @@ class RepositorySearchViewModel (private val repository: GithubRepository) : Vie
     init {
 //        RepositorySearchActions.EmptyList.run()
 
-        fecthData()
+        fetchData()
     }
 
-    private fun fecthData() {
+    private fun fetchData() {
         RepositorySearchActions.Loading.run()
         searchRepositories("Android")
     }

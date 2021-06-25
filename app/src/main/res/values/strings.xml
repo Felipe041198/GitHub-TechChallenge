@@ -7,7 +7,8 @@
     <string name="owner">Owner:</string>
     <string name="repository">Repository:</string>
     <string name="standard_description">Standard description of a someones repo</string>
-    <string name="description">Descrição:</string>
+    <string name="description">Repository Description:</string>
     <string name="empty_search">The search\'s string is empty</string>
     <string name="go_to_repository">Go to repository</string>
+    <string name="owner_pic_hint">Owner profile image</string>
 </resources>

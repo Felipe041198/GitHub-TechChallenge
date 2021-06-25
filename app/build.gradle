@@ -92,6 +92,6 @@ dependencies {
 
     //Mockito
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockito_version"
-    testImplementation "android.arch.core:core-testing:$coreVersion"
+    testImplementation 'android.arch.core:core-testing:1.1.1'
 
 }

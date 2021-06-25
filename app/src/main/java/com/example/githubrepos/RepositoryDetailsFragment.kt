@@ -38,7 +38,7 @@ class RepositoryDetailsFragment : Fragment() {
         binding.repoOwner.text = args.currentRepo.owner.login
         binding.repoDescription.text = args.currentRepo.description
 
-        binding.repoLink.setOnClickListener { args.currentRepo.name.let { url ->
+        binding.repoLink.setOnClickListener { args.currentRepo.url.let { url ->
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
             view.context.startActivity(intent)
         } }
