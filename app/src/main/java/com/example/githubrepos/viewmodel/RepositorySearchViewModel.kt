@@ -1,29 +1,23 @@
-package com.example.githubrepos
+package com.example.githubrepos.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
+import com.example.githubrepos.model.RepositorySearchActions
 import com.example.githubrepos.data.GithubRepository
 import com.example.githubrepos.model.Repository
 import kotlinx.coroutines.flow.Flow
 
 class RepositorySearchViewModel (private val repository: GithubRepository) : ViewModel() {
 
-    var currentQueryValue: String? = null
+    private var currentQueryValue: String? = null
     var currentSearchResult: Flow<PagingData<Repository>>? = null
     internal val action = MutableLiveData<RepositorySearchActions>()
 
     init {
-//        RepositorySearchActions.EmptyList.run()
-
-        fetchData()
-    }
-
-    private fun fetchData() {
-        RepositorySearchActions.Loading.run()
-        searchRepositories("Android")
+        RepositorySearchActions.EmptyList.run()
     }
 
     fun searchRepositories(queryString: String) {

@@ -1,4 +1,4 @@
-package com.example.githubrepos
+package com.example.githubrepos.view
 
 import android.view.ViewGroup
 import androidx.navigation.NavController

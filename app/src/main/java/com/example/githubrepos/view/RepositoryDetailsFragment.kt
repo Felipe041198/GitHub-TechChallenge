@@ -1,4 +1,4 @@
-package com.example.githubrepos
+package com.example.githubrepos.view
 
 import android.content.Intent
 import android.net.Uri
@@ -9,8 +9,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.example.githubrepos.R
 import com.example.githubrepos.databinding.RepositoryDetailsFragmentBinding
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class RepositoryDetailsFragment : Fragment() {
@@ -18,8 +18,6 @@ class RepositoryDetailsFragment : Fragment() {
     private val args by navArgs<RepositoryDetailsFragmentArgs>()
 
     private lateinit var binding: RepositoryDetailsFragmentBinding
-
-    private val viewModel: RepositoryDetailsViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

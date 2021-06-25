@@ -3,7 +3,7 @@ package com.example.githubrepos.data
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.example.githubrepos.api.GithubService
+import com.example.githubrepos.data.GithubService
 import com.example.githubrepos.model.Repository
 import kotlinx.coroutines.flow.Flow
 

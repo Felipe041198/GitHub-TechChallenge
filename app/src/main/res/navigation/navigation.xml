@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/repositorySearchFragment"
-        android:name="com.example.githubrepos.RepositorySearchFragment"
+        android:name="com.example.githubrepos.view.RepositorySearchFragment"
         android:label="Github Repository Search"
         tools:layout="@layout/repository_search_fragment">
         <action
@@ -18,7 +18,7 @@
     </fragment>
     <fragment
         android:id="@+id/repositoryDetailsFragment"
-        android:name="com.example.githubrepos.RepositoryDetailsFragment"
+        android:name="com.example.githubrepos.view.RepositoryDetailsFragment"
         android:label="Repository Details"
         tools:layout="@layout/repository_details_fragment">
         <action

@@ -8,7 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/header"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/dimen_0_dp"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -26,21 +26,21 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/header_info"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/dimen_0_dp"
             android:layout_height="@dimen/dimen_user_image"
             android:layout_marginStart="@dimen/dimen_8_dp"
             android:background="@drawable/outside_shape"
-            android:elevation="1dp"
+            android:elevation="@dimen/dimen_1_dp"
             app:layout_constraintLeft_toRightOf="@id/user_image"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/repo_title"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/dimen_0_dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/dimen_8_dp"
+                android:layout_margin="@dimen/dimen_8_dp"
                 android:text="@string/standard_title"
                 android:textColor="@color/black"
                 android:textSize="@dimen/dimen_24_sp"
@@ -48,10 +48,10 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/owner"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
+                android:layout_height="@dimen/dimen_0_dp"
                 android:layout_marginStart="@dimen/dimen_8_dp"
                 android:layout_marginTop="@dimen/dimen_8_dp"
                 android:text="@string/owner"
@@ -60,9 +60,9 @@
                 app:layout_constraintRight_toLeftOf="@id/repo_owner"
                 app:layout_constraintTop_toBottomOf="@id/repo_title" />
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/repo_owner"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/dimen_0_dp"
                 android:layout_height="wrap_content"
                 android:text="@string/standard_owner"
                 app:layout_constraintLeft_toRightOf="@id/owner"
@@ -72,10 +72,10 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/description"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_height="@dimen/dimen_0_dp"
         android:layout_marginTop="@dimen/dimen_16_dp"
         android:text="@string/description"
         android:textColor="@color/black"
@@ -85,10 +85,10 @@
         app:layout_constraintTop_toBottomOf="@id/header" />
 
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/repo_description"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="@dimen/dimen_0_dp"
         android:layout_marginTop="@dimen/dimen_16_dp"
         android:background="@drawable/outside_shape"
         android:padding="@dimen/dimen_16_dp"

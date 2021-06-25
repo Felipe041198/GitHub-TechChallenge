@@ -1,7 +1,6 @@
-package com.example.githubrepos
+package com.example.githubrepos.model
 
 import androidx.paging.PagingData
-import com.example.githubrepos.model.Repository
 import kotlinx.coroutines.flow.Flow
 
 sealed class RepositorySearchActions {

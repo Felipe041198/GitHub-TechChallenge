@@ -1,4 +1,4 @@
-package com.example.githubrepos
+package com.example.githubrepos.view
 
 import android.os.Bundle
 import android.view.KeyEvent
@@ -6,12 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import android.widget.Toast
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
+import com.example.githubrepos.R
+import com.example.githubrepos.model.RepositorySearchActions
+import com.example.githubrepos.viewmodel.RepositorySearchViewModel
 import com.example.githubrepos.databinding.RepositorySearchFragmentBinding
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
@@ -33,7 +34,7 @@ class RepositorySearchFragment : Fragment() {
 
     private lateinit var binding: RepositorySearchFragmentBinding
 
-    lateinit var adapter: RepositoryAdapter
+    private lateinit var adapter: RepositoryAdapter
     private var searchJob: Job? = null
 
     override fun onCreateView(
@@ -48,7 +49,7 @@ class RepositorySearchFragment : Fragment() {
 
         binding = RepositorySearchFragmentBinding.bind(view)
 
-        setupViews(savedInstanceState)
+        setupViews()
         observeActions()
 
     }
@@ -97,9 +98,9 @@ class RepositorySearchFragment : Fragment() {
     }
 
 
-    private fun setupViews(state: Bundle?) {
+    private fun setupViews() {
 
-        adapter = ReposAdapter(findNavController())
+        adapter = RepositoryAdapter(findNavController())
         binding.reposView.adapter = adapter
 
         binding.inputSearch.setOnEditorActionListener { _, actionId, _ ->

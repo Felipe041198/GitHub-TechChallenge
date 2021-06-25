@@ -1,4 +1,4 @@
-package com.example.githubrepos
+package com.example.githubrepos.view
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
+import com.example.githubrepos.R
 import com.example.githubrepos.model.Repository
 
 class RepositoryViewHolder(view: View, navController: NavController) : RecyclerView.ViewHolder(view) {
@@ -37,7 +38,7 @@ class RepositoryViewHolder(view: View, navController: NavController) : RecyclerV
     private fun showRepoData(repo: Repository) {
         this.repo = repo
         name.text = repo.name
-        owner.text = repo.owner?.login
+        owner.text = repo.owner.login
     }
 
     companion object {
