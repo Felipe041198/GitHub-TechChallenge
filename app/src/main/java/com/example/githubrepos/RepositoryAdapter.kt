@@ -6,17 +6,17 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.example.githubrepos.model.Repository
 
-class ReposAdapter (navController: NavController) : PagingDataAdapter<Repository, RepoViewHolder>(
+class RepositoryAdapter (navController: NavController) : PagingDataAdapter<Repository, RepositoryViewHolder>(
     REPO_COMPARATOR
 ) {
 
     private var navigationController = navController
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepoViewHolder {
-        return RepoViewHolder.create(parent, navigationController)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepositoryViewHolder {
+        return RepositoryViewHolder.create(parent, navigationController)
     }
 
-    override fun onBindViewHolder(holder: RepoViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: RepositoryViewHolder, position: Int) {
         val repoItem = getItem(position)
         if (repoItem != null) {
             holder.bind(repoItem)

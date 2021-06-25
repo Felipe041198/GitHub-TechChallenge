@@ -8,4 +8,5 @@
     <dimen name="dimen_24_sp">24sp</dimen>
     <dimen name="dimen_32_sp">32sp</dimen>
     <dimen name="dimen_user_image">96dp</dimen>
+    <dimen name="error_text_size">24sp</dimen>
 </resources>

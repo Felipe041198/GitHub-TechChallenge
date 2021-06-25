@@ -11,8 +11,8 @@ import kotlinx.coroutines.flow.Flow
 
 class RepositorySearchViewModel (private val repository: GithubRepository) : ViewModel() {
 
-    private var currentQueryValue: String? = null
-    private var currentSearchResult: Flow<PagingData<Repository>>? = null
+    var currentQueryValue: String? = null
+    var currentSearchResult: Flow<PagingData<Repository>>? = null
     internal val action = MutableLiveData<RepositorySearchActions>()
 
     init {

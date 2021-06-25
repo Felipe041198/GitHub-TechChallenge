@@ -11,4 +11,5 @@
     <string name="empty_search">The search\'s string is empty</string>
     <string name="go_to_repository">Go to repository</string>
     <string name="owner_pic_hint">Owner profile image</string>
+    <string name="retry">Retry</string>
 </resources>

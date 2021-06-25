@@ -8,7 +8,7 @@ import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.githubrepos.model.Repository
 
-class RepoViewHolder(view: View, navController: NavController) : RecyclerView.ViewHolder(view) {
+class RepositoryViewHolder(view: View, navController: NavController) : RecyclerView.ViewHolder(view) {
     private val name: TextView = view.findViewById(R.id.repo_title)
     private val owner: TextView = view.findViewById(R.id.repo_owner)
 
@@ -41,9 +41,9 @@ class RepoViewHolder(view: View, navController: NavController) : RecyclerView.Vi
     }
 
     companion object {
-        fun create(parent: ViewGroup, navController: NavController): RepoViewHolder {
+        fun create(parent: ViewGroup, navController: NavController): RepositoryViewHolder {
             val view = LayoutInflater.from(parent.context).inflate(R.layout.repos_view_item, parent, false)
-            return RepoViewHolder(view, navController)
+            return RepositoryViewHolder(view, navController)
         }
     }
 

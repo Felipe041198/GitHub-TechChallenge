@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 
 private const val GITHUB_STARTING_PAGE_INDEX = 1
 
-class GithubRepository(private val service: GithubService) {
+open class GithubRepository(private val service: GithubService) {
 
     fun getSearchResultStream(query: String): Flow<PagingData<Repository>> {
         return Pager(
