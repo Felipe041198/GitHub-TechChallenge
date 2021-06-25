@@ -10,4 +10,5 @@ data class Repository(
     @field:SerializedName("name") val name: String,
     @field:SerializedName("owner") val owner: Owner,
     @field:SerializedName("description") val description: String?,
+    @field:SerializedName("html_url") val url: String,
 ) : Parcelable

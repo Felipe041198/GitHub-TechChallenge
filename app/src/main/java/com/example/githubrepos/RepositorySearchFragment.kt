@@ -52,6 +52,11 @@ class RepositorySearchFragment : Fragment() {
 
         setupViews(savedInstanceState)
         observeActions()
+
+    }
+
+    private fun refreshFragment() {
+        viewModel.refreshFragment()
     }
 
     private fun observeActions() {
@@ -72,17 +77,15 @@ class RepositorySearchFragment : Fragment() {
     }
 
     private fun showLoadingState() {
-        showLoading()
-    }
-
-    private fun showLoading() {
         binding.layoutMessage.visibility = View.VISIBLE
         binding.reposView.visibility = View.GONE
         binding.tvStateMessage.text = getString(R.string.loading)
     }
 
     private fun showEmptyState() {
-        showEmptyList()
+        binding.layoutMessage.visibility = View.VISIBLE
+        binding.reposView.visibility = View.GONE
+        binding.tvStateMessage.text = getString(R.string.empty_list)
     }
 
     private fun showDataState(it: RepositorySearchActions.LoadedList) {
@@ -94,6 +97,7 @@ class RepositorySearchFragment : Fragment() {
             it.repositoryList.collectLatest { adapter.submitData(it) }
         }
     }
+
 
     private fun setupViews(state: Bundle?) {
 
@@ -133,11 +137,5 @@ class RepositorySearchFragment : Fragment() {
                 viewModel.action.postValue(RepositorySearchActions.EmptySearch)
             }
         }
-    }
-
-    private fun showEmptyList() {
-        binding.layoutMessage.visibility = View.VISIBLE
-        binding.reposView.visibility = View.GONE
-        binding.tvStateMessage.text = getString(R.string.empty_list)
     }
 }

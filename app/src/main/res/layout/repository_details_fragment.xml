@@ -13,13 +13,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toLeftOf="@id/repo_title"
         app:layout_constraintBottom_toBottomOf="@id/repo_title"
+        android:layout_marginTop="8dp"
         android:src="@drawable/ic_baseline_search_24"/>
 
     <TextView
         android:id="@+id/repo_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/standart_title"
+        android:text="@string/standard_title"
         android:textColor="@color/black"
         android:layout_marginStart="8dp"
         android:textSize="16dp"
@@ -45,7 +46,7 @@
         app:layout_constraintTop_toTopOf="@id/owner"
         app:layout_constraintLeft_toRightOf="@id/owner"
         app:layout_constraintRight_toRightOf="parent"
-        android:text="@string/standart_author"/>
+        android:text="@string/standard_owner"/>
 
     <TextView
         android:id="@+id/description"
@@ -63,12 +64,21 @@
         android:id="@+id/repo_description"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:text="@string/standart_description"
+        android:text="@string/standard_description"
         android:textColor="@color/black"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/description"
         app:layout_constraintLeft_toRightOf="parent"
         />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/repo_link"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/go_to_repository"/>
 
 
 

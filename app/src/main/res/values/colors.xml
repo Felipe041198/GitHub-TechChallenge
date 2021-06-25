@@ -7,5 +7,6 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="AuthorGray">#616161</color>
+    <color name="ownerGray">#616161</color>
+    <color name="borderGray">#3C3737</color>
 </resources>

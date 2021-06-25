@@ -1,30 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="16dp">
+    android:layout_margin="6dp"
+    app:cardElevation="5dp"
+    app:strokeColor="@color/borderGray"
+    app:strokeWidth="1dp">
 
-    <TextView
-        android:id="@+id/repo_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/standart_title"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:textColor="@color/black"
-        android:textSize="32dp"/>
-
-    <TextView
-        android:id="@+id/repo_owner"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:text="@string/standart_author"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/repo_title"
-        app:layout_constraintRight_toRightOf="parent"
-        android:textColor="@color/AuthorGray"
-        android:textSize="16dp"/>
+        android:layout_height="wrap_content"
+        android:padding="16dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/repo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/repository"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen_16_sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/repo_title"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/repo_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/standard_title"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen_16_sp"
+            android:layout_marginStart="@dimen/dimen_8_dp"
+            app:layout_constraintLeft_toRightOf="@id/repo"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/owner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/owner"
+            android:textColor="@color/ownerGray"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/repo_title"
+            app:layout_constraintBottom_toBottomOf="@id/repo_owner"/>
+
+        <TextView
+            android:id="@+id/repo_owner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/standard_owner"
+            android:textColor="@color/ownerGray"
+            android:textSize="16dp"
+            android:layout_marginStart="@dimen/dimen_8_dp"
+            app:layout_constraintLeft_toRightOf="@id/owner"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/owner"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
