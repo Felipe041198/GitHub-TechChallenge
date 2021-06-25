@@ -1,9 +1,10 @@
 package com.example.githubrepos
 
 import android.app.Application
-import com.nostra13.universalimageloader.core.ImageLoader
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration
-import com.nostra13.universalimageloader.core.assist.QueueProcessingType
+import com.example.githubrepos.di.mainModule
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
 
 
 class GitHubTechChallengeApplication: Application() {
@@ -11,14 +12,11 @@ class GitHubTechChallengeApplication: Application() {
     override fun onCreate(){
 
         super.onCreate()
+        startKoin{
+            androidLogger()
+            androidContext(this@GitHubTechChallengeApplication)
 
-        val config: ImageLoaderConfiguration = ImageLoaderConfiguration.Builder(this)
-            .threadPriority(Thread.NORM_PRIORITY - 2)
-            .threadPoolSize(3)
-            .diskCacheExtraOptions(480, 320, null)
-            .tasksProcessingOrder(QueueProcessingType.LIFO)
-            .build()
-
-        ImageLoader.getInstance().init(config)
+            modules(mainModule)
+        }
     }
 }

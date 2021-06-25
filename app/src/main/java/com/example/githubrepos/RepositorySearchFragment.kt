@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
@@ -19,6 +20,8 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.parameter.parametersOf
 
 class RepositorySearchFragment : Fragment() {
 
@@ -28,7 +31,7 @@ class RepositorySearchFragment : Fragment() {
         private const val DEFAULT_QUERY = "Android"
     }
 
-    private lateinit var viewModel: RepositorySearchViewModel
+    private val viewModel: RepositorySearchViewModel by viewModel()
 
     private lateinit var binding: RepositorySearchFragmentBinding
 
@@ -44,9 +47,6 @@ class RepositorySearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this, Injection.provideViewModelFactory()).get(
-            RepositorySearchViewModel::class.java
-        )
 
         binding = RepositorySearchFragmentBinding.bind(view)
 

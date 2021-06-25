@@ -9,8 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.githubrepos.databinding.RepositoryDetailsFragmentBinding
-import com.nostra13.universalimageloader.core.DisplayImageOptions
-import com.nostra13.universalimageloader.core.ImageLoader
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class RepositoryDetailsFragment : Fragment() {
@@ -19,11 +18,7 @@ class RepositoryDetailsFragment : Fragment() {
 
     private lateinit var binding: RepositoryDetailsFragmentBinding
 
-    companion object {
-        fun newInstance() = RepositoryDetailsFragment()
-    }
-
-    private lateinit var viewModel: RepositoryDetailsViewModel
+    private val viewModel: RepositoryDetailsViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,7 +28,6 @@ class RepositoryDetailsFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        viewModel = ViewModelProvider(this).get(RepositoryDetailsViewModel::class.java)
 
         binding = RepositoryDetailsFragmentBinding.bind(view)
 

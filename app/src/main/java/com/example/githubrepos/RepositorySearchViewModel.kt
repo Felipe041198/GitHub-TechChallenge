@@ -2,6 +2,7 @@ package com.example.githubrepos
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.NavController
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.example.githubrepos.core.SingleLiveEvent
