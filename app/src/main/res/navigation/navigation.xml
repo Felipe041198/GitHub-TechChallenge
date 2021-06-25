@@ -23,7 +23,9 @@
         tools:layout="@layout/repository_details_fragment">
         <action
             android:id="@+id/action_repositoryDetailsFragment_to_repositorySearchFragment"
-            app:destination="@id/repositorySearchFragment" />
+            app:destination="@id/repositorySearchFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
         <argument
             android:name="currentRepo"
             app:argType="com.example.githubrepos.model.Repository" />
