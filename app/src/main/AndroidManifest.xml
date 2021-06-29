@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GitHubRepos"
         android:name=".GitHubTechChallengeApplication">
-        <activity android:name=".SplashActivity">
+        <activity android:name=".view.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -31,11 +31,11 @@ class RepositoryViewHolder(view: View, navController: NavController) : RecyclerV
             name.text = resources.getString(R.string.loading)
             owner.visibility = View.GONE
         } else {
-            showRepoData(repo)
+            showRepositoryData(repo)
         }
     }
 
-    private fun showRepoData(repo: Repository) {
+    private fun showRepositoryData(repo: Repository) {
         this.repo = repo
         name.text = repo.name
         owner.text = repo.owner.login

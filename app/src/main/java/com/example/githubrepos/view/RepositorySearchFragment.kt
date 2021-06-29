@@ -6,12 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import com.example.githubrepos.R
-import com.example.githubrepos.model.RepositorySearchActions
 import com.example.githubrepos.viewmodel.RepositorySearchViewModel
 import com.example.githubrepos.databinding.RepositorySearchFragmentBinding
 import kotlinx.coroutines.Job
@@ -25,10 +25,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class RepositorySearchFragment : Fragment() {
 
     companion object {
-        fun newInstance() = RepositorySearchFragment()
         private const val LAST_SEARCH_QUERY: String = "last_search_query"
-        private const val DEFAULT_QUERY = "Android"
-    }
+        private const val DEFAULT_QUERY = "GitHub"}
 
     private val viewModel: RepositorySearchViewModel by viewModel()
 
@@ -37,6 +35,7 @@ class RepositorySearchFragment : Fragment() {
     private lateinit var adapter: RepositoryAdapter
     private var searchJob: Job? = null
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,64 +43,64 @@ class RepositorySearchFragment : Fragment() {
         return inflater.inflate(R.layout.repository_search_fragment, container, false)
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString(LAST_SEARCH_QUERY, binding.inputSearch.text!!.trim().toString())
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding = RepositorySearchFragmentBinding.bind(view)
 
-        setupViews()
-        observeActions()
+        initAdapter()
 
+        val query = savedInstanceState?.getString(LAST_SEARCH_QUERY) ?: DEFAULT_QUERY
+        searchData(query)
+        initListener(query)
     }
 
-    private fun refreshFragment() {
-        viewModel.refreshFragment()
-    }
 
-    private fun observeActions() {
-        viewModel.action.observe(viewLifecycleOwner, {
-            when (it) {
-                is RepositorySearchActions.LoadedList -> showDataState(it)
-                is RepositorySearchActions.EmptyList -> showEmptyState()
-                is RepositorySearchActions.Loading -> showLoadingState()
-                is RepositorySearchActions.EmptySearch -> showEmptySearchState()
-            }
-        })
-    }
 
-    private fun showEmptySearchState() {
-        binding.layoutMessage.visibility = View.VISIBLE
-        binding.reposView.visibility = View.GONE
-        binding.tvStateMessage.text = getString(R.string.empty_search)
-    }
-
-    private fun showLoadingState() {
-        binding.layoutMessage.visibility = View.VISIBLE
-        binding.reposView.visibility = View.GONE
-        binding.tvStateMessage.text = getString(R.string.loading)
-    }
-
-    private fun showEmptyState() {
-        binding.layoutMessage.visibility = View.VISIBLE
-        binding.reposView.visibility = View.GONE
-        binding.tvStateMessage.text = getString(R.string.empty_list)
-    }
-
-    private fun showDataState(it: RepositorySearchActions.LoadedList) {
-        binding.layoutMessage.visibility = View.GONE
-        binding.reposView.visibility = View.VISIBLE
-
+    private fun searchData(query: String) {
         searchJob?.cancel()
         searchJob = lifecycleScope.launch {
-            it.repositoryList.collectLatest { adapter.submitData(it) }
+            viewModel.searchRepositories(query).collectLatest {
+                adapter.submitData(it)
+            }
+        }
+    }
+
+    private fun initAdapter() {
+        adapter = RepositoryAdapter(findNavController())
+
+        binding.reposView.adapter = adapter.withLoadStateHeaderAndFooter(
+            header = RepositoryLoadStateAdapter { adapter.retry() },
+            footer = RepositoryLoadStateAdapter { adapter.retry() }
+        )
+
+        adapter.addLoadStateListener { loadState ->
+
+            val isEmpty = loadState.refresh is LoadState.NotLoading && adapter.itemCount == 0
+            showEmptyList(isEmpty)
+            binding.reposView.isVisible = loadState.source.refresh is LoadState.NotLoading
+            binding.layoutLoading.isVisible = loadState.source.refresh is LoadState.Loading
+        }
+    }
+
+    private fun showEmptyList(isEmpty: Boolean) {
+        if (isEmpty){
+            binding.layoutEmpty.visibility = View.VISIBLE
+            binding.reposView.visibility = View.GONE
+        } else {
+            binding.layoutEmpty.visibility = View.GONE
+            binding.reposView.visibility = View.VISIBLE
         }
     }
 
 
-    private fun setupViews() {
-
-        adapter = RepositoryAdapter(findNavController())
-        binding.reposView.adapter = adapter
+    private fun initListener(query: String) {
+        binding.inputSearch.setText(query)
 
         binding.inputSearch.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_GO) {
@@ -131,9 +130,7 @@ class RepositorySearchFragment : Fragment() {
     private fun searchRepoByQuery() {
         binding.inputSearch.text!!.trim().let {
             if (it.isNotEmpty()) {
-                viewModel.searchRepositories(it.toString())
-            } else {
-                viewModel.action.postValue(RepositorySearchActions.EmptySearch)
+                searchData(it.toString())
             }
         }
     }

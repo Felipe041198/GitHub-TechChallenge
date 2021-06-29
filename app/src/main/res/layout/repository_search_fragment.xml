@@ -44,7 +44,7 @@
         android:backgroundTint="@color/transparent"/>
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/layout_message"
+        android:id="@+id/layout_empty"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_0_dp"
         android:layout_marginVertical="@dimen/dimen_8_dp"
@@ -57,7 +57,7 @@
         app:layout_constraintTop_toBottomOf="@id/input_layout">
 
         <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/animationView"
+            android:id="@+id/animationViewEmpty"
             android:layout_width="@dimen/dimen_300_dp"
             android:layout_height="@dimen/dimen_300_dp"
             app:lottie_autoPlay="true"
@@ -65,13 +65,79 @@
             app:lottie_url="https://assets2.lottiefiles.com/packages/lf20_dK9q4K.json" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvStateMessage"
+            android:id="@+id/tvStateMessageEmpty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dimen_20_dp"
             android:gravity="center"
-            android:text="Carregando repositorios...."
             android:textSize="@dimen/dimen_24_sp"
+            android:text="@string/empty_list"
+            android:textStyle="bold" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/layout_Loading"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_0_dp"
+        android:layout_marginVertical="@dimen/dimen_8_dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/input_layout">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animationViewLoading"
+            android:layout_width="@dimen/dimen_300_dp"
+            android:layout_height="@dimen/dimen_300_dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_url="https://assets2.lottiefiles.com/packages/lf20_dK9q4K.json" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvStateMessageLoading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_20_dp"
+            android:gravity="center"
+            android:text="@string/loading"
+            android:textSize="@dimen/dimen_24_sp"
+            android:textStyle="bold" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/layout_empty_search"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_0_dp"
+        android:layout_marginVertical="@dimen/dimen_8_dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/input_layout">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animationViewEmptySearch"
+            android:layout_width="@dimen/dimen_300_dp"
+            android:layout_height="@dimen/dimen_300_dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_url="https://assets2.lottiefiles.com/packages/lf20_dK9q4K.json" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvStateMessageEmptySearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_20_dp"
+            android:gravity="center"
+            android:textSize="@dimen/dimen_24_sp"
+            android:text="@string/empty_list"
             android:textStyle="bold" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
