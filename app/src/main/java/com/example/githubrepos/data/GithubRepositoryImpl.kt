@@ -3,15 +3,13 @@ package com.example.githubrepos.data
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.example.githubrepos.data.GithubService
+import com.example.githubrepos.model.GitHubRepository
 import com.example.githubrepos.model.Repository
 import kotlinx.coroutines.flow.Flow
 
-private const val GITHUB_STARTING_PAGE_INDEX = 1
+open class GithubRepositoryImpl(private val service: GithubService) : GitHubRepository {
 
-open class GithubRepository(private val service: GithubService) {
-
-    fun getSearchResultStream(query: String): Flow<PagingData<Repository>> {
+    override fun getSearchResultStream(query: String): Flow<PagingData<Repository>> {
         return Pager(
             config = PagingConfig(
                 pageSize = NETWORK_PAGE_SIZE,

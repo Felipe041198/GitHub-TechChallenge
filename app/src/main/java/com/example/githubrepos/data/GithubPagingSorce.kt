@@ -2,9 +2,7 @@ package com.example.githubrepos.data
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.githubrepos.data.GithubService
-import com.example.githubrepos.data.IN_QUALIFIER
-import com.example.githubrepos.data.GithubRepository.Companion.NETWORK_PAGE_SIZE
+import com.example.githubrepos.data.GithubRepositoryImpl.Companion.NETWORK_PAGE_SIZE
 import com.example.githubrepos.model.Repository
 import retrofit2.HttpException
 import java.io.IOException

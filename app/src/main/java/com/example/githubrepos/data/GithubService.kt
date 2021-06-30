@@ -1,6 +1,5 @@
 package com.example.githubrepos.data
 
-import com.example.githubrepos.data.RepoSearchResponse
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.logging.HttpLoggingInterceptor.Level
