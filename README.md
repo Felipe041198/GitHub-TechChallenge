@@ -33,7 +33,7 @@ Courotines foram utilizadas para conseguir fazer um bom uso das threads disponí
 
 <b>Paging Library 3.0</b>
 
-A Paging Library 3.0 permite que os dados carregados da Api sejam salvos no banco de dados e carregados de acordo com a página em questão. O Remote Mediador age como uma camada que verifica a página atual, próxima e anterior para determinar a próxima chamada à Api, assim como a operação de inserção dos dados no Banco de Dados.
+A Paging Library 3.0 permite que os dados carregados da Api sejam salvos no banco de dados e carregados de acordo com a página em questão. O Remote Mediador age como uma camada que verifica a página atual, próxima e anterior para determinar a próxima chamada à Api, assim como a operação de inserção dos dados.
 
 <b>Koin</b>
 
@@ -49,4 +49,6 @@ Componente utilizada para facilitar a navegação entre as telas.
 
 <h2>Possibilidades Futuras</h2>
 
-<p>Devido a falta de prazo, a implementação dos testes unitários, que seria feita utuilizando o JUnit para automatização dos testes e o Mockito para isolar e injetar as dependências, não foram implementadas no projeto. </p>
+<p>Houve a tentativa de implementação dos testes unitários, que seria feita utilizando o JUnit para automatização dos testes e o Mockito para isolar e criar as dependências, porém a biblioteca utilizada para controlar a exibição das informações e a paginação (Paging 3.0) dificultou a implementação dos testes usando as courotines. </p>
+
+<p>Dessa forma, para criar testes eficientes e lógicos, seria preciso um estudo sobre a documentação do Paging 3.0 e um tempo maior para implementação. Os resultados obtidos até o momento não foram satisfatorios para entrar na versão final do projeto. </p>
