@@ -43,7 +43,7 @@ Biblioteca utilizada para injeção de dependências por ser simples e pratica, 
 
 Biblioteca utilizada para utilização de imagens.
 
-<b>Android Jetpack Nabigation</b>
+<b>Android Jetpack Navigation</b>
 
 Componente utilizada para facilitar a navegação entre as telas.
 
