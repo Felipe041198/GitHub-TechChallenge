@@ -29,7 +29,7 @@ As interfaces foram desenvolvidas utilizando componentes do Material Desing, par
 
 <b>Coroutines</b>
 
-Courotines foram utilizadas para conseguir fazer um bom uso das threads disponível e potencializar a performance da aplicação, sendo possível executar rotinas em cooperação.
+Coroutines foram utilizadas para conseguir fazer um bom uso das threads disponível e potencializar a performance da aplicação, sendo possível executar rotinas em cooperação.
 
 <b>Paging Library 3.0</b>
 
